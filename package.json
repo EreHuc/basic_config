@@ -9,6 +9,9 @@
   "author": "EreHuc",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2"

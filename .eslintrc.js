@@ -1,16 +1,22 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true,
-    'node': true
+  root: true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true
   },
-  'plugins': ['prettier'],
-  'extends': 'eslint:recommended',
-  'parserOptions': {
-    'ecmaVersion': 2018,
-    'sourceType': 'module'
+  plugins: ['prettier'],
+  extends: 'eslint:recommended',
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: false,
+      modules: true,
+    }
   },
-  'rules': {
+  rules: {
     'prettier/prettier': 'error',
     'indent': [
       'error',

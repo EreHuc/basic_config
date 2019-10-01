@@ -1,1 +1,3 @@
-# basic_config
+# Basic config for setting up project
+
+- 
