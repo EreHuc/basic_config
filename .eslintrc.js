@@ -3,7 +3,8 @@ module.exports = {
   env: {
     browser: false,
     es6: true,
-    node: true
+    node: true,
+    jest: true,
   },
   plugins: ['prettier'],
   extends: 'eslint:recommended',
@@ -20,7 +21,8 @@ module.exports = {
     'prettier/prettier': 'error',
     'indent': [
       'error',
-      2
+      2,
+      { 'SwitchCase': 1 }
     ],
     'linebreak-style': [
       'error',

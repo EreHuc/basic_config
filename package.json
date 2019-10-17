@@ -4,7 +4,7 @@
   "description": "basic vanilla js dev env",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"100% !! WoW Such coverage\" && exit 1"
+    "test": "jest ."
   },
   "author": "EreHuc",
   "license": "ISC",
@@ -13,8 +13,10 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2"
   }
 }

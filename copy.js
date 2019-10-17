@@ -8,6 +8,9 @@ const eslintrcPath = '.eslintrc.js';
 const gitignorePath = '.gitignore';
 const prettierrcPath = '.prettierrc';
 const packageJsonPath = 'package.json';
+const jestConfigPath = 'jest.config.js';
+const fileMockPath = '__mocks__/fileMock.js';
+const styleMockPath = '__mocks__/styleMock.js';
 
 // Color for console.log.. NOICE !
 const Reset = '\x1b[0m';
@@ -41,6 +44,7 @@ function voidMainVoid() {
   console.log();
   if (process.argv.length && process.argv[2]) {
     const destination = path.resolve('./', process.argv[2]);
+
     copyFileFromPaths(
       destination,
       babelrcPath,
@@ -48,7 +52,14 @@ function voidMainVoid() {
       gitignorePath,
       prettierrcPath,
       packageJsonPath,
+      jestConfigPath,
     );
+
+    createMockDirectory(destination, '__mocks__');
+
+    copyFileFromPaths(destination, fileMockPath, styleMockPath);
+
+    console.log(`${FgYellow}%s${Reset}`, '$', `cd ${destination} && npm i`);
     process.exit(0);
   } else {
     console.error(
@@ -60,7 +71,26 @@ function voidMainVoid() {
 }
 
 /**
- * copy file from a list of path
+ * Create the specified folder at destination
+ * @param {String} destination
+ * @param {String} folder
+ */
+function createMockDirectory(destination, folder) {
+  try {
+    const folderDestination = path.resolve(destination, './', folder);
+    fs.accessSync(folderDestination);
+    fs.mkdirSync(folderDestination);
+    console.log(
+      `${FgBlue}%s${Reset}`,
+      `${folder} directory created at ${destination}`,
+    );
+  } catch (e) {
+    console.error(`${FgRed}%s${Reset}`, `${folder} directory already exist`);
+  }
+}
+
+/**
+ * Copy file from a list of path
  * @param {String} destination - Path destination
  * @param {String} paths
  */
@@ -77,7 +107,6 @@ function copyFileFromPaths(destination, ...paths) {
     );
   });
   console.log(`${FgBlue}%s${Reset}`, `${paths.length} files copied 🚀`);
-  console.log(`${FgYellow}%s${Reset}`, '$', `cd ${destination} && npm i`);
 }
 
 /**
