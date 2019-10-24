@@ -55,7 +55,7 @@ function voidMainVoid() {
       jestConfigPath,
     );
 
-    createMockDirectory(destination, '__mocks__');
+    createDirectory(destination, '__mocks__');
 
     copyFileFromPaths(destination, fileMockPath, styleMockPath);
 
@@ -75,17 +75,17 @@ function voidMainVoid() {
  * @param {String} destination
  * @param {String} folder
  */
-function createMockDirectory(destination, folder) {
+function createDirectory(destination, folder) {
+  const folderDestination = path.resolve(destination, './', folder);
   try {
-    const folderDestination = path.resolve(destination, './', folder);
     fs.accessSync(folderDestination);
+    console.log(`${FgRed}%s${Reset}`, `${folder} directory already exist`);
+  } catch (e) {
     fs.mkdirSync(folderDestination);
     console.log(
       `${FgBlue}%s${Reset}`,
       `${folder} directory created at ${destination}`,
     );
-  } catch (e) {
-    console.error(`${FgRed}%s${Reset}`, `${folder} directory already exist`);
   }
 }
 
