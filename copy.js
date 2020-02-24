@@ -9,6 +9,12 @@ const gitignorePath = '.gitignore';
 const prettierrcPath = '.prettierrc';
 const packageJsonPath = 'package.json';
 const jestConfigPath = 'jest.config.js';
+const indexHTMLPath = 'index.html';
+const webpackCommonPath = 'webpack.common.js';
+const webpackDevPath = 'webpack.dev.js';
+const webpackProdPath = 'webpack.prod.js';
+const tsConfigPath = 'tsconfig.json';
+const jsConfigPath = 'jsconfig.json';
 const fileMockPath = '__mocks__/fileMock.js';
 const styleMockPath = '__mocks__/styleMock.js';
 
@@ -53,9 +59,16 @@ function voidMainVoid() {
       prettierrcPath,
       packageJsonPath,
       jestConfigPath,
+      indexHTMLPath,
+      webpackCommonPath,
+      webpackDevPath,
+      webpackProdPath,
+      tsConfigPath,
+      jsConfigPath,
     );
 
     createDirectory(destination, '__mocks__');
+    createDirectory(destination, 'src');
 
     copyFileFromPaths(destination, fileMockPath, styleMockPath);
 

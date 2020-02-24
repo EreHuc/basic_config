@@ -4,19 +4,37 @@
   "description": "basic vanilla js dev env",
   "main": "index.js",
   "scripts": {
-    "test": "jest ."
+    "test": "jest .",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "webpack",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
   },
   "author": "EreHuc",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
     "jest": "^24.9.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "svg-url-loader": "^4.0.0",
+    "typescript": "^3.8.2",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.6",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-merge": "^4.2.2"
   }
 }
