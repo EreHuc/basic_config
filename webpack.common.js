@@ -15,7 +15,7 @@ const bundleAnalyzerPlugin = isBundleAnalyzer()
 
 module.exports = {
   // Change to your "entry-point".
-  entry: './src/index',
+  entry: './src/index.ts',
   output: {
     library: packageJSON.name,
     libraryTarget: 'umd',
@@ -65,29 +65,6 @@ module.exports = {
               outputPath: 'images/',
             },
           },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg/,
-        use: [
-          {
-            loader: 'svg-url-loader',
-            options: {
-              limit: 1024,
-              name: '[name].[ext]',
-              outputPath: 'images/',
-            },
-          },
-          'image-webpack-loader',
         ],
       },
     ],

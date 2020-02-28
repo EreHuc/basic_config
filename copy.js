@@ -5,6 +5,7 @@ const fs = require('fs');
 // A list of path
 const babelrcPath = '.babelrc';
 const eslintrcPath = '.eslintrc.js';
+const eslintrcSrcPath = 'src/.eslintrc.js';
 const gitignorePath = '.gitignore';
 const prettierrcPath = '.prettierrc';
 const packageJsonPath = 'package.json';
@@ -51,6 +52,9 @@ function voidMainVoid() {
   if (process.argv.length && process.argv[2]) {
     const destination = path.resolve('./', process.argv[2]);
 
+    createDirectory(destination, '__mocks__');
+    createDirectory(destination, 'src');
+
     copyFileFromPaths(
       destination,
       babelrcPath,
@@ -65,12 +69,10 @@ function voidMainVoid() {
       webpackProdPath,
       tsConfigPath,
       jsConfigPath,
+      fileMockPath,
+      styleMockPath,
+      eslintrcSrcPath,
     );
-
-    createDirectory(destination, '__mocks__');
-    createDirectory(destination, 'src');
-
-    copyFileFromPaths(destination, fileMockPath, styleMockPath);
 
     console.log(`${FgYellow}%s${Reset}`, '$', `cd ${destination} && npm i`);
     process.exit(0);
