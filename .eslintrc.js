@@ -4,7 +4,7 @@ module.exports = {
     browser: false,
     es6: true,
     node: true,
-    jest: true,
+    jest: false,
   },
   plugins: ['prettier'],
   extends: 'eslint:recommended',
@@ -21,7 +21,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'indent': [
       'error',
-      2,
+      4,
       { 'SwitchCase': 1 }
     ],
     'linebreak-style': [
@@ -44,6 +44,7 @@ module.exports = {
         'ignoreReadBeforeAssign': false
       }
     ],
-    'prefer-arrow-callback': ['error', {'allowUnboundThis': false}]
+    'prefer-arrow-callback': ['error', {'allowUnboundThis': false}],
+    'no-console': 0,
   }
 };
